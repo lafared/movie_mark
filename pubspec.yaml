@@ -64,6 +64,14 @@ flutter:
       fonts:
         - asset: assets/font/aAbsoluteEmpire.ttf
           weight: 400
+    - family: Nougat-ExtraBlack
+      fonts:
+        - asset: assets/font/Nougat-ExtraBlack.ttf
+          weight: 400
+    - family: Elementary_Gothic_Bookhand
+      fonts:
+        - asset: assets/font/Elementary_Gothic_Bookhand.ttf
+          weight: 400
 
   # To add assets to your application, add an assets section, like this:
   # assets:

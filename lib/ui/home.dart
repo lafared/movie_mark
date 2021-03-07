@@ -51,12 +51,12 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
           Container(
             alignment: Alignment.center,
             height: TAB_HEIGHT,
-            child: Tab(child: Text(AppStr.MOVIES, style: TextStyle(fontFamily: 'aAbsoluteEmpire', fontSize: 20, color: Colors.white),),)
+            child: Tab(child: Text(AppStr.MOVIES, style: TextStyle(fontFamily: 'Nougat-ExtraBlack', fontSize: 20, color: Colors.white),),)
           ),
           Container(
             alignment: Alignment.center,
             height: TAB_HEIGHT,
-            child: Tab(child: Text(AppStr.MOVIE_MARK, style: TextStyle(fontFamily: 'aAbsoluteEmpire', fontSize: 20, color: Colors.white),),)
+            child: Tab(child: Text(AppStr.MOVIE_MARK, style: TextStyle(fontFamily: 'Nougat-ExtraBlack', fontSize: 20, color: Colors.white),),)
           ),
         ],
         controller: _tabController,
