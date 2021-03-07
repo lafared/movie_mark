@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:movie_mark/main.dart';
 
 class Intro extends StatefulWidget {
   @override
@@ -7,6 +10,12 @@ class Intro extends StatefulWidget {
 }
 
 class _Intro extends State<Intro> {
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     body: _body(),
@@ -35,5 +44,10 @@ class _Intro extends State<Intro> {
         )
       ],
     ),
+  );
+
+  Future<Timer> startTimer() async => Timer(
+      Duration(seconds: 2),
+      () => Navigator.of(context).pushReplacementNamed(Routes.HOME)
   );
 }
