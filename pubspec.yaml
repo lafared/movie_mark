@@ -50,6 +50,7 @@ flutter:
   assets:
     - assets/lottie/lottie_book.json
     - assets/lottie/lottie_cub.json
+    - assets/img/
 
   fonts:
     - family: Hey August

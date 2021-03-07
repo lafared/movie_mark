@@ -4,7 +4,8 @@ class AppStr {
 
   // movies tab
   static const MOVIES = 'Movies';
+  static const SEARCH_HINT = 'Search..';
 
   // movie mark tab
-  static const MOVIE_MARK = 'Movie Mark';
+  static const MOVIE_MARK = 'MovieMark';
 }

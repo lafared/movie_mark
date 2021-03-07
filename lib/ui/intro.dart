@@ -19,6 +19,7 @@ class _Intro extends State<Intro> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+    resizeToAvoidBottomInset: false,
     body: _body(),
   );
 
