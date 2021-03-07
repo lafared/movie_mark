@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:movie_mark/app_str.dart';
 import 'package:movie_mark/main.dart';
 
 class Intro extends StatefulWidget {
@@ -40,7 +41,7 @@ class _Intro extends State<Intro> {
         Container(
           padding: EdgeInsets.only(top: 70),
           alignment: Alignment.center,
-          child: Text('Movie\nMark', style: TextStyle(fontFamily: 'Hey August', fontSize: 45, color: Colors.black),),
+          child: Text(AppStr.MOVIE__MARK, style: TextStyle(fontFamily: 'Hey August', fontSize: 45, color: Colors.black),),
         )
       ],
     ),

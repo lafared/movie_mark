@@ -31,7 +31,6 @@ void main() => runApp(MovieMark());
 class MovieMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: 'title : Movie Mark',
     theme: ThemeData(
         primarySwatch: Colors.blue
     ),
