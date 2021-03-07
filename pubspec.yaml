@@ -56,6 +56,14 @@ flutter:
       fonts:
         - asset: assets/font/Hey August.ttf
           weight: 400
+    - family: Long_Shot
+      fonts:
+        - asset: assets/font/Long_Shot.ttf
+          weight: 400
+    - family: aAbsoluteEmpire
+      fonts:
+        - asset: assets/font/aAbsoluteEmpire.ttf
+          weight: 400
 
   # To add assets to your application, add an assets section, like this:
   # assets:
