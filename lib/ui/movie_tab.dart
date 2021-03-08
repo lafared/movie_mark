@@ -1,6 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_mark/app_color.dart';
 import 'package:movie_mark/app_str.dart';
+import 'package:movie_mark/net/items.dart';
+import 'package:movie_mark/net/naver_movies.dart';
+import 'package:movie_mark/net/naver_rest_client.dart';
 
 class MovieTab extends StatefulWidget {
   @override
@@ -71,7 +75,7 @@ class _MovieTab extends State<MovieTab> {
               height: 50,
               alignment: Alignment.center,
               child: Visibility(
-                visible: !_searchFocus.hasFocus,
+                visible: (!_searchFocus.hasFocus && _searchTextController.value.text.length == 0),
                 child: Text(AppStr.SEARCH_HINT, style: TextStyle(fontSize: 15, color: Colors.black45),)
               )
             ),
@@ -85,6 +89,9 @@ class _MovieTab extends State<MovieTab> {
                 style: TextStyle(fontSize: 25),
                 cursorColor: AppColor().lightColor,
                 focusNode: _searchFocus,
+                onSubmitted: (value) {
+                  _doSearch();
+                },
               ),
             ),
           ],
@@ -94,8 +101,39 @@ class _MovieTab extends State<MovieTab> {
         width: 50,
         height: 50,
         padding: EdgeInsets.all(10),
-        child: Image.asset('assets/img/search.png',)
+        child: GestureDetector(
+          onTap: () {
+            print('search');
+            _doSearch();
+          },
+          child: Image.asset('assets/img/search.png',)
+        ),
       ),
     ],
   );
+
+  _doSearch() {
+    print('_doSearch text : ${_searchTextController.value.text}');
+    final dio = Dio();
+    final client = NaverRestClient(dio);
+    client.getMovies('NBFCT42oSAetHAofjuzM', 'IwZnrR9vuS', '존윅').then((value) => {
+      _printLog(value)
+    });
+  }
+
+  _printLog(NaverMovies naverMovies) {
+    print(naverMovies.lastBuildDate);
+    print(naverMovies.total);
+    print(naverMovies.start);
+    print(naverMovies.display);
+    for(int i = 0; i < naverMovies.items.length; i++) {
+      print(naverMovies.items[i].title);
+      print(naverMovies.items[i].director);
+      print(naverMovies.items[i].actor);
+      print(naverMovies.items[i].pubDate);
+      print(naverMovies.items[i].image);
+      print(naverMovies.items[i].subtitle);
+      print(naverMovies.items[i].userRating);
+    }
+  }
 }
