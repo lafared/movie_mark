@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_mark/app_color.dart';
 import 'package:movie_mark/app_str.dart';
-import 'package:movie_mark/net/items.dart';
 import 'package:movie_mark/net/naver_movies.dart';
 import 'package:movie_mark/net/naver_rest_client.dart';
+import 'package:movie_mark/ui/movie_list_view.dart';
 
 class MovieTab extends StatefulWidget {
   @override
@@ -13,14 +13,13 @@ class MovieTab extends StatefulWidget {
 
 class _MovieTab extends State<MovieTab> {
   TextEditingController _searchTextController;
-  TextEditingController _testTextController;
   FocusNode _searchFocus;
+  NaverMovies naverMovies;
 
   @override
   void initState() {
     super.initState();
     _searchTextController = new TextEditingController();
-    _testTextController = new TextEditingController();
     _searchTextController.addListener(() {
       print('listner : ${_searchTextController.text}');
     });
@@ -45,12 +44,7 @@ class _MovieTab extends State<MovieTab> {
           height: 1,
           color: AppColor().mainColor,
         ),
-        Text(AppStr.MOVIES),
-        TextField(
-          controller: _testTextController,
-          decoration: InputDecoration(labelText: AppStr.SEARCH_HINT,),
-          style: TextStyle(fontSize: 20),
-        ),
+        MovieListView(naverMovies: naverMovies)
       ],
     ),
   );
@@ -116,24 +110,27 @@ class _MovieTab extends State<MovieTab> {
     print('_doSearch text : ${_searchTextController.value.text}');
     final dio = Dio();
     final client = NaverRestClient(dio);
-    client.getMovies('NBFCT42oSAetHAofjuzM', 'IwZnrR9vuS', '존윅').then((value) => {
-      _printLog(value)
-    });
+    client.getMovies('NBFCT42oSAetHAofjuzM', 'IwZnrR9vuS', _searchTextController.value.text)
+        .then((value) => {_loadData(value)});
   }
 
-  _printLog(NaverMovies naverMovies) {
-    print(naverMovies.lastBuildDate);
-    print(naverMovies.total);
-    print(naverMovies.start);
-    print(naverMovies.display);
-    for(int i = 0; i < naverMovies.items.length; i++) {
-      print(naverMovies.items[i].title);
-      print(naverMovies.items[i].director);
-      print(naverMovies.items[i].actor);
-      print(naverMovies.items[i].pubDate);
-      print(naverMovies.items[i].image);
-      print(naverMovies.items[i].subtitle);
-      print(naverMovies.items[i].userRating);
+  _loadData(NaverMovies movies) {
+    setState(() {
+      naverMovies = movies;
+    });
+
+    print(movies.lastBuildDate);
+    print(movies.total);
+    print(movies.start);
+    print(movies.display);
+    for(int i = 0; i < movies.items.length; i++) {
+      print(movies.items[i].title);
+      print(movies.items[i].director);
+      print(movies.items[i].actor);
+      print(movies.items[i].pubDate);
+      print(movies.items[i].image);
+      print(movies.items[i].subtitle);
+      print(movies.items[i].userRating);
     }
   }
 }
