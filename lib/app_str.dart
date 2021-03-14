@@ -1,6 +1,7 @@
 class AppStr {
   // intro
   static const MOVIE__MARK = 'Movie\nMark';
+  static const NAVER__MOVIE = 'Naver\nMovie'; //tmp
 
   // movies tab
   static const MOVIES = 'Movies';

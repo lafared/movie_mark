@@ -40,16 +40,16 @@ class _Intro extends State<Intro> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(top: 70),
-          alignment: Alignment.center,
-          child: Text(AppStr.MOVIE__MARK, style: TextStyle(fontFamily: 'Hey August', fontSize: 45, color: Colors.black),),
+          padding: EdgeInsets.only(bottom: 70),
+          alignment: Alignment.bottomCenter,
+          child: Text(AppStr.NAVER__MOVIE, style: TextStyle(fontFamily: 'Hey August', fontSize: 45, color: Colors.black),),
         )
       ],
     ),
   );
 
   Future<Timer> startTimer() async => Timer(
-      Duration(seconds: 2),
-      () => Navigator.of(context).pushReplacementNamed(Routes.HOME)
+      Duration(seconds: 3),
+      () => Navigator.of(context).pushReplacementNamed(Routes.MOVIE)
   );
 }
